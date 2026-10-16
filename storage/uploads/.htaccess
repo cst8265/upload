@@ -1,0 +1,3 @@
+# Defence in depth if this project is ever placed under Apache:
+# files in storage/ must never be served directly.
+Require all denied

@@ -1,0 +1,24 @@
+{
+    "name": "algonquin/cst8265-upload-demo",
+    "description": "CST8265 Web Security - secure vs. insecure image upload demo",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.1",
+        "ext-fileinfo": "*",
+        "ext-gd": "*"
+    },
+    "scripts": {
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php -d post_max_size=8M -d upload_max_filesize=8M -S localhost:8000 -t public"
+        ],
+        "reset": [
+            "@php -r \"foreach (array_merge(glob('public/uploads/*'), glob('storage/uploads/*')) as \\$f) { if (is_file(\\$f)) unlink(\\$f); } echo 'Upload folders cleared.' . PHP_EOL;\""
+        ]
+    },
+    "scripts-descriptions": {
+        "serve": "Start the PHP development server at http://localhost:8000",
+        "reset": "Delete all uploaded files from both demos"
+    }
+}
